@@ -95,7 +95,7 @@ footer {
 <body>
 
 <header>
-    <a href="home.html"><button>Home</button></a>
+    <a href="index.html"><button>Home</button></a>
     <a href="registration.html"><button>Register</button></a>
     <a href="Terms&Policy.html">Terms & Policy</a>
 </header>
@@ -126,7 +126,7 @@ document.getElementById('login-btn').addEventListener('click', function(){
 
     const users = JSON.parse(localStorage.getItem('users') || '[]');
     const foundUser = users.find(u => u.email === email && u.pass === pass);
-
+//parse = ტექსტის ან მონაცემის წაკითხვა და მისი ნაწილებად დანაწევრება ისე, რომ კომპიუტერმა გაიგოს.
     if(foundUser){
         localStorage.setItem('currentUser', JSON.stringify(foundUser));
         window.location.href = "home2.html";

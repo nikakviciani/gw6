@@ -104,7 +104,7 @@ button#check-btn:hover {
 <body>
 
 <header>
-    <button id="logout-btn">Logout</button>
+    <a id="logout-btn" href="index.html">Logout</a>
     <a href="Terms&Policy2.html">Terms & Policy </a>
     <a href="acauntinfro.html">Account Info</a>
 </header>
@@ -124,14 +124,14 @@ const apiKey = "22ebce1b04007c4229f8bb2e394f09ea";
 
 document.getElementById('logout-btn').addEventListener('click', function(){
     localStorage.removeItem('currentUser');
-    window.location.href = "home.html";
+    window.location.href = "index.html";
 });
 
 async function getWeather() {
     const city = document.getElementById("city-input").value.trim();
     const weatherDiv = document.getElementById("weather");
     const errorDiv = document.getElementById("error");
-
+//trim() ფუნქცია ამოწმებს და აშორებს ძედმეტ ცარიელ ადგილებს.
     weatherDiv.innerHTML = "";
     errorDiv.textContent = "";
 
@@ -165,7 +165,7 @@ function displayWeather(data) {
     weatherDiv.innerHTML = `
         <h2>${name}</h2>
         <!-- <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather-icon"> -->
-        <p>ტემპერატურა: <b>${temp}°C</b></p>
+        <p>ტემპერატურა: <b>${temp}C</b></p>
         <p>აღწერა: <b>${desc}</b></p>
         <p>ტენიანობა: <b>${humidity}%</b></p>
         <p>ქარის სიჩქარე: <b>${wind} m/s</b></p>

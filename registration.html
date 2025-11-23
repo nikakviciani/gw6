@@ -95,7 +95,7 @@ footer {
 <body>
 
 <header>
-    <a href="home.html"><button>Home</button></a>
+    <a href="index.html"><button>Home</button></a>
     <a href="login.html"><button>Login</button></a>
     <a href="Terms&Policy.html">Terms & Policy</a>
 </header>
@@ -125,7 +125,7 @@ document.getElementById('reg-btn').addEventListener('click', function(){
     const terms = document.getElementById('reg-terms').checked;
     const errorDiv = document.getElementById('reg-error');
     errorDiv.textContent = '';
-
+//trim() ფუნქცია ამოწმებს და აშორებს ძედმეტ ცარიელ ადგილებს.
     if(!name || !email || !pass){
         errorDiv.textContent = "გთხოვ, შეავსე ყველა ველი!";
         return;
