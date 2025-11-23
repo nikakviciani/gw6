@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: #fff;
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+header {
+    display:flex;
+    justify-content:flex-end;
+    padding: 15px 30px;
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(6px);
+}
+header a, header button {
+    margin-left: 15px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    background: #ffffff33;
+    border:none;
+    border-radius:6px;
+    padding:8px 15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+header a:hover, header button:hover {
+    background:#fff;
+    color:#000;
+}
+main {
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+.container {
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 450px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+input {
+    padding: 12px 15px;
+    width: 80%;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    outline: none;
+}
+button#login-btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 10px;
+    background: #ffffffcc;
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+button#login-btn:hover {
+    background:#fff;
+    transform: scale(1.05);
+}
+#error {
+    margin-top: 15px;
+    color: #ff6b6b;
+    font-weight: bold;
+    font-size: 16px;
+    text-align:center;
+}
+footer {
+    background:#fff;
+    color:#000;
+    text-align:center;
+    padding:15px;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <a href="home.html"><button>Home</button></a>
+    <a href="registration.html"><button>Register</button></a>
+    <a href="Terms&Policy.html">Terms & Policy</a>
+</header>
+
+<main>
+    <div class="container">
+        <h1>Login</h1>
+        <input type="email" id="login-email" placeholder="იმეილი">
+        <input type="password" id="login-password" placeholder="პაროლი">
+        <button id="login-btn">Login</button>
+        <div id="login-error"></div>
+    </div>
+</main>
+
+<footer>რეკლამა</footer>
+
+<script>
+document.getElementById('login-btn').addEventListener('click', function(){
+    const email = document.getElementById('login-email').value.trim();
+    const pass = document.getElementById('login-password').value.trim();
+    const errorDiv = document.getElementById('login-error');
+    errorDiv.textContent = '';
+
+    if(!email || !pass){
+        errorDiv.textContent = "გთხოვ, შეავსე ყველა ველი!";
+        return;
+    }
+
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const foundUser = users.find(u => u.email === email && u.pass === pass);
+
+    if(foundUser){
+        localStorage.setItem('currentUser', JSON.stringify(foundUser));
+        window.location.href = "home2.html";
+    } else {
+        errorDiv.textContent = "იმეილი ან პაროლი არასწორია!";
+    }
+});
+</script>
+
+</body>
+</html>
